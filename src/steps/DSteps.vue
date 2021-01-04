@@ -33,7 +33,7 @@ export default {
     },
     activeColor: {
       type: String,
-      default: "green",
+      default: "orange",
     },
     doneColor: {
       type: String,
@@ -41,7 +41,7 @@ export default {
     },
     toDoColor: {
       type: String,
-      default: "darkblue",
+      default: "rebeccapurple",
     },
   },
 };
