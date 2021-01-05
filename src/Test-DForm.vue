@@ -1,24 +1,14 @@
 <template>
   <d-form class="form" ref="form" :model="user" :rules="rules">
     <d-form-item label="用户名" prop="username">
-      <d-input
-        :value="user.username"
-        @input="user.username = $event"
-        placeholder="请输入用户名"
-      />
+      <d-input v-model="user.username" placeholder="请输入用户名" />
     </d-form-item>
 
     <d-form-item label="密码" prop="password">
-      <d-input
-        :value="user.password"
-        v-model="user.password"
-        placeholder="请输入密码"
-      />
+      <d-input v-model="user.password" placeholder="请输入密码" />
     </d-form-item>
 
-    <d-form-item>
-      <d-button type="primary" @click.prevent="login">登录</d-button>
-    </d-form-item>
+    <d-button type="submit" @click="login">登 录</d-button>
   </d-form>
 </template>
 
@@ -64,8 +54,15 @@ export default {
     };
   },
   methods: {
-    login() {
-      console.log("submitting");
+    login(e) {
+      this.$refs.form.validate((valid) => {
+        if (valid) {
+          alert("验证成功");
+        } else {
+          alert("验证失败");
+          e.preventDefault();
+        }
+      });
     },
   },
 };
@@ -74,6 +71,6 @@ export default {
 <style>
 .form {
   width: 30%;
-  margin: 150px auto;
+  margin: 100px auto;
 }
 </style>
